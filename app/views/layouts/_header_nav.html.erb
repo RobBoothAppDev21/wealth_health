@@ -1,9 +1,18 @@
-<div data-controller="header" class="bg-white shadow">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+<div 
+  data-controller="header"
+  class="bg-white shadow"
+>
+  <div class="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button -->
-        <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+        <button 
+          data-header-target='mainButton'
+          type="button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
           <span class="sr-only">Open main menu</span>
           <!--
             Icon when menu is closed.
@@ -49,7 +58,7 @@
           <div>
             <button 
               data-header-target="profileButton"
-              data-header-open-value="false"
+              data-action="click@window->header#hide"
               type="button" 
               class="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               id="user-menu-button"
@@ -97,7 +106,7 @@
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
+  <div class="hidden sm:hidden" id="mobile-menu">
     <div class="space-y-1 pb-4 pt-2">
       <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
       <a href="#" class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700">Dashboard</a>
