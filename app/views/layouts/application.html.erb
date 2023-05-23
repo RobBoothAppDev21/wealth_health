@@ -13,6 +13,8 @@
 
   <body>
       <%= render "layouts/header_nav" %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <main class="container mx-auto mt-16 px-5 lg:px-20">
         <%= yield %>
     </main>
