@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require "plaid"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -70,4 +71,15 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+
+  configuration = Plaid::Configuration.new
+  configuration.server_index = Plaid::Configuration::Environment["sandbox"]
+  configuration.api_key["PLAID-CLIENT-ID"] = Rails.application.credentials.dig(:plaid, :client_id)
+  configuration.api_key["PLAID-SECRET"] = Rails.application.credentials.dig(:plaid, :sandbox_key)
+
+  api_client = Plaid::ApiClient.new(
+    configuration
+  )
+
+  client = Plaid::PlaidApi.new(api_client)
 end
